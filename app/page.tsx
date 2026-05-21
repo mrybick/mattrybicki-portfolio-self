@@ -8,7 +8,7 @@ export default function Home() {
         AZ REALTOR®, Sales Scholar, and Director of Student Engagement at 
         the ProSales Club.
       </p>
-          <ul className="text-base">
+          <ul className="text-base font-medium">
             <li><a className="hover:underline" href="https://linkedin.com/in/matthew-j-rybicki" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
             <li><a className="hover:underline" href="https://byrybicki.com" target="_blank" rel="noopener noreferrer">By Rybicki Real Estate</a></li>
             <li><a className="hover:underline" href="https://plaincomp.com" target="_blank" rel="noopener noreferrer">PlainComp</a></li>
