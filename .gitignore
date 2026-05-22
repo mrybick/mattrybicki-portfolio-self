@@ -10,6 +10,10 @@
 !.yarn/releases
 !.yarn/versions
 
+# design misc
+design/scraps/
+design/uploads/
+
 # testing
 /coverage
 
