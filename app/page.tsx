@@ -27,9 +27,9 @@ export default function Home() {
       </div>
       <div
         aria-hidden="true"
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 [writing-mode:vertical-rl] font-sans font-black text-[clamp(15rem,30vw,30rem)] leading-[0.86] tracking-[-0.07em] text-foreground whitespace-nowrap select-none pointer-events-none"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 [writing-mode:vertical-rl] font-sans font-black text-[25vh] leading-[0.86] tracking-[-0.07em] text-foreground whitespace-nowrap select-none pointer-events-none"
         > {/* right column / bleed — TODO */}
-          Rybicki
+          Rybicki.
       </div>
     </section>
   )
