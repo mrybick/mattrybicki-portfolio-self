@@ -1,3 +1,5 @@
+import HeroBleed from "@/components/HeroBleed"
+
 export default function Home() {
   return (
     <section className="min-h-screen grid grid-cols-2 px-6 md:px-12 py-12 border-b border-foreground relative overflow-hidden"> {/* the hero wrapper */}
@@ -25,12 +27,7 @@ export default function Home() {
           <span>Phoenix, AZ</span>
         </div>
       </div>
-      <div
-        aria-hidden="true"
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 [writing-mode:vertical-rl] font-sans font-black text-[25vh] leading-[0.86] tracking-[-0.07em] text-foreground whitespace-nowrap select-none pointer-events-none"
-        > {/* right column / bleed — TODO */}
-          Rybicki.
-      </div>
+      <HeroBleed /> 
     </section>
   )
 }
