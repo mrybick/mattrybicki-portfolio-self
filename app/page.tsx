@@ -1,6 +1,37 @@
 import HeroBleed from "@/components/HeroBleed";
 
 export default function Home() {
+  const selected_work =[
+    {
+      id: 1,
+      displayname: "Real Estate",
+      tag1: "KW",
+      tag2: "Brokerage",
+      since_yr: 2024
+    },
+    {
+      id: 2,
+      displayname: "Media",
+      tag1: "By Rybicki Media",
+      tag2: "Photography",
+      since_yr: 2025
+    },
+    {
+      id: 3,
+      displayname: "PlainComp",
+      tag1: "SaaS",
+      tag2: "AVM",
+      since_yr: 2026
+    },
+    {
+      id: 4,
+      displayname: "ASU",
+      tag1: "Education",
+      tag2: "3D Map",
+      since_yr: 2023
+    },
+  ]
+  
   const milestones = [
     {
       year: "2023",
@@ -120,6 +151,44 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </section> {/* end section 01 */}
+
+      {/* start section 02 */}
+      <section id="selected_work" className="hidden md:block px-6 md:px-12 py-24 border-b border-divider">
+        <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12 border-b">
+          <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
+            02
+          </span>
+          <h2 className="text-display-md font-medium tracking-heading text-foreground">
+            selected work.
+          </h2>
+          <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
+            passion.
+          </span>
+        </div>
+        <div>
+          <ul>
+            {selected_work.map((sw) => 
+            <li key={sw.id} className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline py-6 border-b border-divider">
+              <div className="align-left border-r">
+                <span className="p-1">{sw.id}</span>
+              </div>
+              
+              <div className="flex flex-col gap-2">
+                  <h3 className="text-display-md font-light">
+                    {sw.displayname}
+                  </h3>
+                  <span className="flex gap-2 text-mono-label font-mono uppercase tracking-mono text-foreground-mono">
+                    {sw.tag1} · {sw.tag2} / Since {sw.since_yr}
+                  </span>
+              </div>
+              <div>
+                →
+              </div>
+              </li>
+            )}
+          </ul>
+        </div>           
       </section>
     </main>
   );

@@ -74,6 +74,7 @@
   --text-display-xl:  5.5rem;   /* 88px  — page H1 */
   --text-display-lg:  4rem;     /* 64px  — section heading */
   --text-display-md:  3rem;     /* 48px  — sub-display */
+  --text-display-md: 2.75rem;    /* 40px  - sub-sub-display */
   --text-h1:          2.25rem;  /* 36px */
   --text-h2:          1.5rem;   /* 24px */
   --text-h3:          1.25rem;  /* 20px */
@@ -158,6 +159,7 @@
   --text-display-xl: var(--text-display-xl);
   --text-display-lg: var(--text-display-lg);
   --text-display-md: var(--text-display-md);
+  --text-display-sm: var(--text-display-sm);
   --text-h1: var(--text-h1);
   --text-h2: var(--text-h2);
   --text-h3: var(--text-h3);
