@@ -1,37 +1,41 @@
 import HeroBleed from "@/components/HeroBleed";
 
 export default function Home() {
-  const selected_work =[
+  const selected_work = [
     {
       id: 1,
       displayname: "Real Estate",
       tag1: "KW",
       tag2: "Brokerage",
-      since_yr: 2024
+      since_yr: 2024,
+      url: "https://byrybicki.com",
     },
     {
       id: 2,
       displayname: "Media",
       tag1: "By Rybicki Media",
       tag2: "Photography",
-      since_yr: 2025
+      since_yr: 2025,
+      url: "https://byrybickimedia.com",
     },
     {
       id: 3,
       displayname: "PlainComp",
       tag1: "SaaS",
       tag2: "AVM",
-      since_yr: 2026
+      since_yr: 2026,
+      url: "https://plaincomp.com",
     },
     {
       id: 4,
       displayname: "ASU",
       tag1: "Education",
       tag2: "3D Map",
-      since_yr: 2023
+      since_yr: 2023,
+      url: "#",
     },
-  ]
-  
+  ];
+
   const milestones = [
     {
       year: "2023",
@@ -120,9 +124,11 @@ export default function Home() {
         <HeroBleed />
       </section>{" "}
       {/* end section 00 */}
-
       {/* start section 01 */}
-      <section id="timeline" className="hidden md:block px-6 md:px-12 py-24 border-b border-divider">
+      <section
+        id="timeline"
+        className="hidden md:block px-6 md:px-12 py-24 border-b border-divider"
+      >
         <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12">
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
             01
@@ -151,11 +157,14 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section> {/* end section 01 */}
-
+      </section>{" "}
+      {/* end section 01 */}
       {/* start section 02 */}
-      <section id="selected_work" className="hidden md:block px-6 md:px-12 py-24 border-b border-divider">
-        <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12 border-b">
+      <section
+        id="selected_work"
+        className="hidden md:block px-6 md:px-12 py-24 border-b border-divider"
+      >
+        <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12">
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
             02
           </span>
@@ -163,32 +172,67 @@ export default function Home() {
             selected work.
           </h2>
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
-            passion.
+            entries.
           </span>
         </div>
         <div>
           <ul>
-            {selected_work.map((sw) => 
-            <li key={sw.id} className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline py-6 border-b border-divider">
-              <div className="align-left border-r">
-                <span className="p-1">{sw.id}</span>
-              </div>
-              
-              <div className="flex flex-col gap-2">
-                  <h3 className="text-display-md font-light">
-                    {sw.displayname}
-                  </h3>
-                  <span className="flex gap-2 text-mono-label font-mono uppercase tracking-mono text-foreground-mono">
-                    {sw.tag1} · {sw.tag2} / Since {sw.since_yr}
+            {selected_work.map((sw) => (
+              <li key={sw.id}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={sw.url}
+                  className="grid group transition-all duration-300 hover:px-5 ease-out grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline py-6 border-b border-divider"
+                >
+                  <div className="text-left border-r">
+                    <span className="p-1 font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
+                      {sw.id}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-display-md font-light">{sw.displayname}</h3>
+                    <span className="flex gap-2 text-mono-label font-mono uppercase tracking-mono text-foreground-mono">
+                      {sw.tag1} · {sw.tag2} / Since {sw.since_yr}
+                    </span>
+                  </div>
+                  <span className="group-hover:translate-x-2 group-hover:text-foreground transition-all duration-300 ease-out">
+                    →
                   </span>
-              </div>
-              <div>
-                →
-              </div>
+                </a>
               </li>
-            )}
+            ))}
           </ul>
-        </div>           
+        </div>
+      </section>
+      {/* section 03 start */}
+      <section id="contact" className="hidden md:block px-6 md:px-12 py-24">
+        <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12">
+          <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
+            03
+          </span>
+          <h2 className="text-display-md font-medium tracking-heading text-foreground">
+            let{"'"}s connect.
+          </h2>
+          <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
+            email
+          </span>
+        </div>
+        <div className="flex flex-col gap-8 items-start">
+          <a
+            href="mailto:mrybick2@asu.edu"
+            className="text-display-md font-light tracking-heading text-foreground hover:text-foreground-mono transition-colors duration-300"
+          >
+            mrybick2@asu.edu
+          </a>
+          <a
+            href="mailto:mrybick2@asu.edu"
+            className="inline-flex items-center gap-3 px-6 py-3 border border-foreground font-mono uppercase tracking-mono text-mono-label text-foreground hover:bg-foreground hover:text-background transition-colors duration-300"
+          >
+            email me →
+          </a>
+        </div>
       </section>
     </main>
   );
