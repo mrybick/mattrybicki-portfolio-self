@@ -22,31 +22,55 @@ export default function ResumeSection({
       <h2 className="text-h2 border-b p-2 mt-8">{title}.</h2>
       {entries
         .filter((entry) => entry.bullets[activeLane].length > 0)
-        .map((entry) => {
+        .map((entry, i) => {
           const dateDisplay = entry.isPresent
             ? `${entry.dateStart} - Present`
             : entry.dateEnd
               ? `${entry.dateStart} - ${entry.dateEnd}`
               : entry.dateStart;
+          const num = String(i + 1).padStart(2, "0");
           return (
             <div
-              className="cursor-pointer p-4 text-display-sm transition-opacity hover:opacity-60 duration-300 border-b border-divider py-4"
+              className="cursor-pointer transition-[opacity,padding] hover:opacity-60 duration-300 border-b border-divider py-4 hover:px-3"
               key={entry.id}
               onClick={() => setOpenId(openId === entry.id ? null : entry.id)}
             >
-              <div className="flex justify-between items-baseline">
-                {entry.title} - {entry.subtitle}
-                <span className="text-mono-label text-foreground-mono font-mono transition-colors">
-                  {dateDisplay}
+              <div className="grid grid-cols-[56px_1fr_auto] gap-6 items-center">
+                <span className="font-mono text-mono-label text-foreground-mono text-center">
+                  {num}
                 </span>
+                <div className="flex flex-col gap-1">
+                  <span>{entry.title}</span>
+                  <span className="font-mono uppercase text-mono-label text-foreground-mono">
+                    {entry.subtitle}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-mono-label text-foreground-mono">
+                    {dateDisplay}
+                  </span>
+                  <span
+                    className={`font-mono text-foreground-mono transition-transform duration-300 ease-out ${
+                      openId === entry.id ? "rotate-90" : ""
+                    }`}
+                  >
+                    →
+                  </span>
+                </div>
+                <div
+                  className={`col-start-2 col-end-4 grid transition-[grid-template-rows,margin] duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)]  ${
+                    openId === entry.id ? "grid-rows-[1fr] mt-4" : "grid-rows-[0fr] mt-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <ul className="flex flex-col gap-1.5 list-disc pl-5 marker:text-foreground-mono text-sm">
+                      {entry.bullets[activeLane].map((bullet, bi) => (
+                        <li key={bi}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
-              {openId === entry.id && (
-                <ul className="list-disc pl-5">
-                  {entry.bullets[activeLane].map((bullet, i) => (
-                    <li key={i}>{bullet}</li>
-                  ))}
-                </ul>
-              )}
             </div>
           );
         })}
