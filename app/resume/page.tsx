@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import entry from "next/dist/server/typescript/rules/entry";
+import ResumeSection from "@/components/ResumeSection";
+import SkillsSection from "@/components/SkillsSection";
 
-interface Entry {
+export interface Entry {
   id: string;
   title: string;
   subtitle: string;
@@ -11,6 +12,14 @@ interface Entry {
   dateEnd: string | null;
   isPresent: boolean;
   bullets: {
+    finance: string[];
+    sales: string[];
+  };
+}
+
+export interface Skill {
+  category: string;
+  skills: {
     finance: string[];
     sales: string[];
   };
@@ -115,6 +124,296 @@ const education: Entry[] = [
   },
 ];
 
+const honors: Entry[] = [
+  {
+    title: "Sales Scholar - W.P. Carey Professional Sales Program",
+    id: "ss",
+    subtitle: "Arizona State University · 1 of 24 selected",
+    dateStart: "March 2026",
+    dateEnd: null,
+    isPresent: true,
+    bullets: {
+      finance: [
+        "Competitively selected as one of 24 Sales Scholars in the W.P. Carey Professional Sales Program",
+        "National competition track and executive mentorship beginning Fall 2026",
+      ],
+      sales: [
+        "Competitively selected as one of 24 Sales Scholars in the W.P. Carey Professional Sales Program",
+        "Competed nationally at the MTSU Collegiate Sales Competition (Apr 2026), selling Oracle NetSuite in multi-round judged B2B roleplay",
+        "Selected for national competitions and executive mentorship beginning Fall 2026",
+      ],
+    },
+  },
+  {
+    title: "Honor Board Member - Delta Tau Delta",
+    id: "delt",
+    subtitle: "Theta Gamma Chapter - Arizona State University",
+    dateStart: "November 2023",
+    dateEnd: "November 2024",
+    isPresent: false,
+    bullets: {
+      finance: [
+        "Reviewed conduct cases and upheld organizational accountability in a structured, quasi-judicial process",
+        "Coordinated case proceedings with chapter leadership and applied national fraternity bylaws to recommend sanctions",
+      ],
+      sales: [
+        "Reviewed conduct cases and upheld organizational accountability in a structured, quasi-judicial process",
+        "Coordinated case proceedings with chapter leadership and applied national fraternity bylaws to recommend sanctions",
+      ],
+    },
+  },
+];
+
+const competitions: Entry[] = [
+  {
+    id: "jnj",
+    title: "J&J University Case Competition - 2nd of 8 teams in finals",
+    subtitle: "Johnson & Johnson · EPG and Operations · ASU Campus",
+    dateStart: "April 2026",
+    dateEnd: null,
+    isPresent: false,
+    bullets: {
+      finance: [
+        "Placed 2nd of 8 teams in finals; field of 180 students across ~26 teams competing on a real Johnson & Johnson financial case",
+        "Led financial modeling on a 7-person team; hand-coded a Python-based DCF simulating 180 decision combinations across a 10-year P&L",
+        "Validated the model to 0.000% error against the provided Excel baseline workbook",
+        "Recommended scenario #22 over the NPV-maximizing scenario, framed around J&J's Credo (medium pricing reaching 80% patient access vs high pricing capping at 65%)",
+        "Presented the recommendation to a panel of J&J executives in a 20-minute IC-style presentation",
+      ],
+      sales: [
+        "Placed 2nd of 8 teams in finals; field of 180 students across ~26 teams",
+        "Led financial modeling and recommendation framing on a 7-person team analyzing a real Johnson & Johnson business case",
+        "Presented to a panel of J&J executives in a 20-minute IC-style format",
+      ],
+    },
+  },
+  {
+    id: "mtsu",
+    title: "MTSU National Tech Sales Competition",
+    subtitle: "Middle Tennessee State University · Murfreesboro, TN",
+    dateStart: "April 2026",
+    dateEnd: null,
+    isPresent: false,
+    bullets: {
+      finance: [],
+      sales: [
+        "Selected by W.P. Carey faculty to represent ASU at a national collegiate tech sales competition against top university sales programs",
+        "Sold Oracle NetSuite in a multi-round judged B2B roleplay",
+      ],
+    },
+  },
+  {
+    id: "samsara",
+    title: "Sun Devil Sales Pitch Competition - Samsara",
+    subtitle: "W.P. Carey, ASU",
+    dateStart: "January 2026",
+    dateEnd: null,
+    isPresent: false,
+    bullets: {
+      finance: [],
+      sales: [
+        "Competed in a live sales pitch competition representing Samsara",
+        "Evaluated by industry professionals on presentation and value-proposition delivery",
+      ],
+    },
+  },
+];
+
+const projects: Entry[] = [
+  {
+    id: "plaincomp",
+    title: "PlainComp - Residential Property Valuation Platform",
+    subtitle: "Founder · Pre-launch",
+    dateStart: "2025",
+    dateEnd: null,
+    isPresent: true,
+    bullets: {
+      finance: [
+        "Designed and deployed a regression-based residential valuation platform analyzing 25+ data points per comparable sale",
+        "Multi-factor weighted comp scoring producing confidence-graded valuations (A-E) with market adjustments",
+        "AI-generated narratives and end-to-end PDF reporting pipeline",
+      ],
+      sales: [
+        "Founded a residential property valuation platform serving real estate professionals; pre-launch",
+        "End-to-end product ownership: regression modeling, valuation logic, AI-generated narratives, PDF reporting",
+      ],
+    },
+  },
+  {
+    id: "dcf-opt",
+    title: "DCF Scenario Optimizer",
+    subtitle: "Python · GitHub · Hand-typed",
+    dateStart: "2026",
+    dateEnd: null,
+    isPresent: false,
+    bullets: {
+      finance: [
+        "Python tool that programmatically evaluates every valid combination of business decisions in a DCF model",
+        "180 valid decision combinations ranked by NPV across a 10-year P&L to identify the maximizing strategy",
+        "Validated to 0.000% error against an Excel source of truth",
+        "Used in J&J Case Competition (2nd place, Apr 2026)",
+      ],
+      sales: [],
+    },
+  },
+  {
+    id: "cma",
+    title: "CMA Regression Model",
+    subtitle: "Internal · Used in transactions",
+    dateStart: "2025",
+    dateEnd: null,
+    isPresent: true,
+    bullets: {
+      finance: [
+        "Built and deployed a regression-based comparative market analysis model using MLS data",
+        "Used in live transactions at Keller Williams to determine fair market value, assess investment viability, and advise on pricing and deal structure",
+        "Trained on MLS comparable sales data",
+      ],
+      sales: [],
+    },
+  },
+];
+
+const licenses: Entry[] = [
+  {
+    id: "azdre",
+    title: "Arizona Real Estate Salesperson License",
+    subtitle: "Arizona Department of Real Estate",
+    dateStart: "September 2024",
+    dateEnd: null,
+    isPresent: true,
+    bullets: {
+      finance: ["Active Arizona REALTOR® license; brokerage at Keller Williams Arizona Realty"],
+      sales: ["Active Arizona REALTOR® license; brokerage at Keller Williams Arizona Realty"],
+    },
+  },
+  {
+    id: "part107",
+    title: "FAA Part 107 Remote Pilot Certificate",
+    subtitle: "Federal Aviation Administration",
+    dateStart: "Active",
+    dateEnd: null,
+    isPresent: false,
+    bullets: {
+      finance: [
+        "Active FAA Part 107 certificate for commercial UAS operations",
+        "Used in real estate media work for aerial photography and video",
+      ],
+      sales: [
+        "Active FAA Part 107 certificate for commercial UAS operations",
+        "Used in real estate media work for aerial photography and video",
+      ],
+    },
+  },
+  {
+    id: "naiop",
+    title: "NAIOP Arizona - Student Member",
+    subtitle: "Commercial Real Estate Development Association",
+    dateStart: "Current",
+    dateEnd: null,
+    isPresent: false,
+    bullets: {
+      finance: [
+        "Student member of NAIOP Arizona, the commercial real estate development association",
+      ],
+      sales: [],
+    },
+  },
+  {
+    id: "memberships",
+    title: "Memberships",
+    subtitle: "ProSales Gold · FMA · Real Estate Club · NAR®",
+    dateStart: "Active",
+    dateEnd: null,
+    isPresent: false,
+    bullets: {
+      finance: [
+        "ProSales Gold Member, ASU",
+        "Financial Management Association, ASU",
+        "Real Estate Club, ASU",
+        "National Association of REALTORS® (NAR®)",
+      ],
+      sales: [
+        "ProSales Gold Member, ASU",
+        "Financial Management Association, ASU",
+        "Real Estate Club, ASU",
+        "National Association of REALTORS® (NAR®)",
+      ],
+    },
+  },
+];
+
+const skills: Skill[] = [
+  {
+    category: "Analytical",
+    skills: {
+      finance: [
+        "DCF Modeling",
+        "Scenario & Sensitivity Analysis",
+        "NPV/IRR",
+        "Regression Analysis",
+        "Comparative Market Analysis",
+        "Advanced Excel",
+        "Market Research & Valuation",
+      ],
+      sales: [
+        "DCF Modeling",
+        "Scenario & Sensitivity Analysis",
+        "Regression Analysis",
+        "Comparative Market Analysis",
+        "Advanced Excel",
+        "Market Research & Valuation",
+      ],
+    },
+  },
+  {
+    category: "Real Estate",
+    skills: {
+      finance: [
+        "MLS Research",
+        "Contract Negotiation",
+        "Due Diligence Coordination",
+        "Residential & Land Transactions",
+        "Investment Analysis",
+        "CRE Financial Modeling (REFM in progress)",
+      ],
+      sales: [],
+    },
+  },
+  {
+    category: "Sales",
+    skills: {
+      finance: [],
+      sales: [
+        "Negotiation & Deal Structuring",
+        "Client Advisory",
+        "Prospecting & Lead Generation",
+        "Objection Handling",
+        "CRM Systems",
+        "Business Development",
+      ],
+    },
+  },
+  {
+    category: "Software",
+    skills: {
+      finance: ["Python (beginner)", "Git / GitHub", "Excel"],
+      sales: [
+        "TypeScript (beginner)",
+        "JavaScript (beginner)",
+        "Next.js (learning)",
+        "Git / GitHub",
+      ],
+    },
+  },
+  {
+    category: "Languages",
+    skills: {
+      finance: ["English (native)", "Polish (beginner)"],
+      sales: ["English (native)", "Polish (beginner)"],
+    },
+  },
+];
 export default function ResumePage() {
   const [activeLane, setActiveLane] = useState<"finance" | "sales">("finance");
   const [openId, setOpenId] = useState<string | null>(null);
@@ -144,54 +443,49 @@ export default function ResumePage() {
           sales
         </button>
       </div>
-      <h2 className="border-b p-2">Experience.</h2>
-      {roles
-        .filter((role) => role.bullets[activeLane].length > 0)
-        .map((role) => (
-          <div
-            className="cursor-pointer p-4  transition-opacity hover:opacity-60 duration-300 border-b border-divider py-4"
-            key={role.id}
-            onClick={() => setOpenId(openId === role.id ? null : role.id)}
-          >
-            <div className="flex justify-between items-baseline">
-              {role.title} - {role.subtitle}
-              <span className="text-mono-label text-foreground-mono font-mono transition-colors">
-                {role.dateStart} - {role.isPresent ? "Present" : role.dateEnd}{" "}
-              </span>
-            </div>
-            {openId === role.id && (
-              <ul className="list-disc pl-5">
-                {role.bullets[activeLane].map((bullet, i) => (
-                  <li key={i}>{bullet}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
-      <h2 className="border-b p-2">Education.</h2>
-      {education
-        .filter((entry) => entry.bullets[activeLane].length > 0)
-        .map((entry) => (
-          <div
-            className="cursor-pointer p-4  transition-opacity hover:opacity-60 duration-300 border-b border-divider py-4"
-            key={entry.id}
-            onClick={() => setOpenId(openId === entry.id ? null : entry.id)}
-          >
-            <div className="flex justify-between items-baseline">
-              {entry.title} - {entry.subtitle}
-              <span className="text-mono-label text-foreground-mono font-mono transition-colors">
-                {entry.dateStart} - {entry.isPresent ? "Present" : entry.dateEnd}{" "}
-              </span>
-            </div>
-            {openId === entry.id && (
-              <ul className="list-disc pl-5">
-                {entry.bullets[activeLane].map((bullet, i) => (
-                  <li key={i}>{bullet}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))}
+      <ResumeSection
+        title="Experience"
+        entries={roles}
+        activeLane={activeLane}
+        openId={openId}
+        setOpenId={setOpenId}
+      />
+      <ResumeSection
+        title="Education"
+        entries={education}
+        activeLane={activeLane}
+        openId={openId}
+        setOpenId={setOpenId}
+      />
+      <ResumeSection
+        title="Honors & Leadership"
+        entries={honors}
+        activeLane={activeLane}
+        openId={openId}
+        setOpenId={setOpenId}
+      />
+      <ResumeSection
+        title="Competitions"
+        entries={competitions}
+        activeLane={activeLane}
+        openId={openId}
+        setOpenId={setOpenId}
+      />
+      <ResumeSection
+        title="Projects"
+        entries={projects}
+        activeLane={activeLane}
+        openId={openId}
+        setOpenId={setOpenId}
+      />
+      <ResumeSection
+        title="Licenses"
+        entries={licenses}
+        activeLane={activeLane}
+        openId={openId}
+        setOpenId={setOpenId}
+      />
+      <SkillsSection skills={skills} activeLane={activeLane} />
     </main>
   );
 }
