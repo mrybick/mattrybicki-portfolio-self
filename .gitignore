@@ -10,9 +10,12 @@
 !.yarn/releases
 !.yarn/versions
 
-# design misc
-design/scraps/
-design/uploads/
+# design handoff / process (local only, not part of the shipped app)
+/design/
+
+# AI assistant config (local only)
+CLAUDE.md
+AGENTS.md
 
 # jetbrains
 .idea/
