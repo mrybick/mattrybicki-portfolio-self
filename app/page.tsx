@@ -99,10 +99,10 @@ export default function Home() {
           <div className="flex flex-col gap-6 md:gap-8 py-12 md:py-24">
             {" "}
             {/* middle (name + lede) */}
-            <h1 className="text-display-xl font-medium leading-[0.96] tracking-display text-foreground">
+            <h1 className="text-display-xl fadeUp font-medium leading-[0.96] tracking-display text-foreground">
               Matthew J. Rybicki
             </h1>
-            <p className="text-body-lg font-normal leading-[1.45] text-foreground-muted max-w-[38ch]">
+            <p className="text-body-lg font-normal fadeUp leading-[1.45] text-foreground-muted max-w-[38ch]">
               Senior at Arizona State. People in one degree, money in the other, code on the side.
             </p>
           </div>

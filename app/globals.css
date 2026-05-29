@@ -138,6 +138,19 @@
   --radius-soft:     2px;
 }
 
+.fadeUp {animation: fadeUp 0.6s ease-in-out both;}
+
+@media (prefers-reduced-motion: reduce) { .fadeUp { animation: none;}}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+  transform: translateY(0); }
+}
 @theme inline {
   /* COLORS */
   --color-background: var(--background);
