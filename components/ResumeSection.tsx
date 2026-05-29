@@ -8,6 +8,8 @@ interface ResumeSectionProps {
   activeLane: "finance" | "sales";
   openId: string | null;
   setOpenId: (openId: string | null) => void;
+  number: number;
+  meta: string;
 }
 
 export default function ResumeSection({
@@ -16,10 +18,22 @@ export default function ResumeSection({
   activeLane,
   openId,
   setOpenId,
+  number,
+  meta,
 }: ResumeSectionProps) {
+  const sectionNum = String(number + 1).padStart(2, "0");
   return (
     <section>
-      <h2 className="text-h2 border-b p-2 mt-8">{title}.</h2>
+      <h2 className="grid grid-cols-[56px_1fr_auto] items-center gap-6 border-b pb-4 mt-24">
+        <span className="font-mono text-mono-label text-foreground-mono text-center">
+          {sectionNum}
+        </span>
+        <span className="text-display-md">{title}</span>
+        <span className="font-mono uppercase text-mono-label text-foreground-mono text-right">
+          {" "}
+          {meta}
+        </span>
+      </h2>
       {entries
         .filter((entry) => entry.bullets[activeLane].length > 0)
         .map((entry, i) => {
@@ -35,12 +49,12 @@ export default function ResumeSection({
               key={entry.id}
               onClick={() => setOpenId(openId === entry.id ? null : entry.id)}
             >
-              <div className="grid grid-cols-[56px_1fr_auto] gap-6 items-center">
+              <div className="grid grid-cols-[56px_1fr_auto] gap-x-6 items-center">
                 <span className="font-mono text-mono-label text-foreground-mono text-center">
                   {num}
                 </span>
                 <div className="flex flex-col gap-1">
-                  <span>{entry.title}</span>
+                  <span className="text-h2">{entry.title}</span>
                   <span className="font-mono uppercase text-mono-label text-foreground-mono">
                     {entry.subtitle}
                   </span>

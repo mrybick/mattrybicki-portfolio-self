@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ResumeSection from "@/components/ResumeSection";
 import SkillsSection from "@/components/SkillsSection";
+import Image from "next/image";
 
 export interface Entry {
   id: string;
@@ -23,6 +24,13 @@ export interface Skill {
     finance: string[];
     sales: string[];
   };
+}
+
+export interface Section {
+  id: string;
+  title: string;
+  meta: string;
+  entries: Entry[];
 }
 
 const roles: Entry[] = [
@@ -397,7 +405,7 @@ const skills: Skill[] = [
   {
     category: "Software",
     skills: {
-      finance: ["Python (beginner)", "Git / GitHub", "Excel"],
+      finance: ["Python (beginner)", "TypeScript (beginner)", "Git / GitHub", "Excel"],
       sales: [
         "TypeScript (beginner)",
         "JavaScript (beginner)",
@@ -414,77 +422,152 @@ const skills: Skill[] = [
     },
   },
 ];
+
+const sections: Section[] = [
+  {
+    id: "exp",
+    title: "Experience",
+    meta: "4 Roles",
+    entries: roles,
+  },
+  {
+    id: "edu",
+    title: "Education",
+    meta: "Tempe, AZ",
+    entries: education,
+  },
+  {
+    id: "honors",
+    title: "Honors & Leadership",
+    meta: "4X Dean's List",
+    entries: honors,
+  },
+  {
+    id: "comps",
+    title: "Competitions",
+    meta: "2026",
+    entries: competitions,
+  },
+  {
+    id: "projects",
+    title: "Projects",
+    meta: "Built with Passion",
+    entries: projects,
+  },
+  {
+    id: "licenses",
+    title: "Licenses & Certifications",
+    meta: "Active",
+    entries: licenses,
+  },
+];
+
 export default function ResumePage() {
   const [activeLane, setActiveLane] = useState<"finance" | "sales">("finance");
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <main className="px-6 py-8">
-      <h1 className="text-display-2xl text-center">{activeLane}</h1>
-      <div className="flex gap-4 mb-8">
-        <button
-          className={`px-3 py-1.5 border ${
-            activeLane === "finance"
-              ? "bg-foreground text-background border-foreground"
-              : "border-divider text-foreground-mono hover:text-foreground"
-          } font-mono uppercase tracking-mono text-mono-label transition-colors`}
-          onClick={() => setActiveLane("finance")}
-        >
-          finance
-        </button>
-        <button
-          className={`px-3 py-1.5 border ${
-            activeLane === "sales"
-              ? "bg-foreground text-background border-foreground"
-              : "border-divider text-foreground-mono hover:text-foreground"
-          } font-mono uppercase tracking-mono text-mono-label transition-colors`}
-          onClick={() => setActiveLane("sales")}
-        >
-          sales
-        </button>
+      <header className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-12 items-start border-b border-foreground pb-12 mb-12">
+        <div className="relative aspect-4/5 border-foreground">
+          <Image
+            src="/headshot.jpeg"
+            alt="Matthew Rybicki"
+            fill
+            className="object-cover grayscale ml-4"
+          />
+        </div>
+        <div className="flex flex-col justify-between self-stretch">
+          <h1 className="text-display-2xl font-bold tracking-display leading-[0.88]">
+            Matthew <br />
+            J.
+            <br /> Rybicki<span className="text-foreground-mono">.</span>
+          </h1>
+          <p className="text-body-lg text-foreground-muted max-w-[36ch]">
+            People in one degree, money in the other.
+          </p>
+          <dl className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-1 border-t border-divider pt-4">
+            <dt className="font-mono uppercase text-mono-label text-foreground-mono">Email</dt>
+            <dd className="font-mono text-mono-label">mrybick2@asu.edu</dd>
+            <dt className="font-mono uppercase text-mono-label text-foreground-mono">LinkedIn</dt>
+            <dd className="font-mono text-mono-label">
+              <a
+                href="https://linkedin.com/in/matthew-j-rybicki"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"
+              >
+                matthew-j-rybicki
+              </a>
+            </dd>
+            <dt className="font-mono uppercase text-mono-label text-foreground-mono">Location</dt>
+            <dd className="font-mono text-mono-label">Phoenix, AZ</dd>
+          </dl>
+        </div>
+      </header>
+      <div className="grid grid-cols-[auto_1fr_auto] gap-6 items-baseline border-b border-divider pb-3 mb-8">
+        <span className="font-mono uppercase text-mono-label tracking-mono text-foreground-mono">
+          View as
+        </span>
+        <div className="flex gap-4">
+          <button
+            className={`px-3 py-1.5 border ${
+              activeLane === "finance"
+                ? "bg-foreground text-background border-foreground"
+                : "border-divider text-foreground-mono hover:text-foreground"
+            } font-mono uppercase tracking-mono text-mono-label transition-colors`}
+            onClick={() => setActiveLane("finance")}
+          >
+            finance
+          </button>
+          <button
+            className={`px-3 py-1.5 border ${
+              activeLane === "sales"
+                ? "bg-foreground text-background border-foreground"
+                : "border-divider text-foreground-mono hover:text-foreground"
+            } font-mono uppercase tracking-mono text-mono-label transition-colors`}
+            onClick={() => setActiveLane("sales")}
+          >
+            sales
+          </button>
+        </div>
+        <div className="flex gap-5 justify-self-end font-mono uppercase text-mono-label tracking-mono">
+          <a
+            href="/resume/repe.pdf"
+            download
+            className={`transition-colors ${
+              activeLane === "finance"
+                ? "text-foreground"
+                : "text-foreground-mono hover:text-foreground"
+            }`}
+          >
+            REPE PDF ↓
+          </a>
+          <a
+            href="/resume/sales.pdf"
+            download
+            className={`transition-colors ${
+              activeLane === "sales"
+                ? "text-foreground"
+                : "text-foreground-mono hover:text-foreground"
+            }`}
+          >
+            Sales PDF ↓
+          </a>
+        </div>
       </div>
-      <ResumeSection
-        title="Experience"
-        entries={roles}
-        activeLane={activeLane}
-        openId={openId}
-        setOpenId={setOpenId}
-      />
-      <ResumeSection
-        title="Education"
-        entries={education}
-        activeLane={activeLane}
-        openId={openId}
-        setOpenId={setOpenId}
-      />
-      <ResumeSection
-        title="Honors & Leadership"
-        entries={honors}
-        activeLane={activeLane}
-        openId={openId}
-        setOpenId={setOpenId}
-      />
-      <ResumeSection
-        title="Competitions"
-        entries={competitions}
-        activeLane={activeLane}
-        openId={openId}
-        setOpenId={setOpenId}
-      />
-      <ResumeSection
-        title="Projects"
-        entries={projects}
-        activeLane={activeLane}
-        openId={openId}
-        setOpenId={setOpenId}
-      />
-      <ResumeSection
-        title="Licenses"
-        entries={licenses}
-        activeLane={activeLane}
-        openId={openId}
-        setOpenId={setOpenId}
-      />
+      {sections.map((section, i) => (
+        <ResumeSection
+          key={section.id}
+          number={i}
+          title={section.title}
+          meta={section.meta}
+          entries={section.entries}
+          activeLane={activeLane}
+          openId={openId}
+          setOpenId={setOpenId}
+        />
+      ))}
       <SkillsSection skills={skills} activeLane={activeLane} />
     </main>
   );
