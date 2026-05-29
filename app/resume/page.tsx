@@ -468,17 +468,19 @@ export default function ResumePage() {
 
   return (
     <main className="px-6 py-8">
-      <header className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-12 items-start border-b border-foreground pb-12 mb-12">
-        <div className="relative aspect-4/5 border-foreground">
+      <header className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] gap-12 items-start border-b border-foreground pb-12 mb-12">
+        <div className="relative aspect-square md:aspect-4/5 border-foreground">
           <Image
             src="/headshot.jpeg"
             alt="Matthew Rybicki"
             fill
-            className="object-cover grayscale ml-4"
+            priority
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover grayscale"
           />
         </div>
-        <div className="flex flex-col justify-between self-stretch">
-          <h1 className="text-display-2xl font-bold tracking-display leading-[0.88]">
+        <div className="flex flex-col gap-8 md:gap-0 justify-between self-stretch">
+          <h1 className=" text-display-xl md:text-display-2xl font-bold tracking-display leading-[0.88]">
             Matthew <br />
             J.
             <br /> Rybicki<span className="text-foreground-mono">.</span>

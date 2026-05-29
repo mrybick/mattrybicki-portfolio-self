@@ -28,7 +28,7 @@ export default function ResumeSection({
         <span className="font-mono text-mono-label text-foreground-mono text-center">
           {sectionNum}
         </span>
-        <span className="text-display-md">{title}</span>
+        <span className="text-h1 md:text-display-md">{title}</span>
         <span className="font-mono uppercase text-mono-label text-foreground-mono text-right">
           {" "}
           {meta}
@@ -49,7 +49,7 @@ export default function ResumeSection({
               key={entry.id}
               onClick={() => setOpenId(openId === entry.id ? null : entry.id)}
             >
-              <div className="grid grid-cols-[56px_1fr_auto] gap-x-6 items-center">
+              <div className="grid grid-cols-[40px_1fr] md:grid-cols-[56px_1fr_auto] gap-x-6 gap-y-2 items-center">
                 <span className="font-mono text-mono-label text-foreground-mono text-center">
                   {num}
                 </span>
@@ -59,7 +59,7 @@ export default function ResumeSection({
                     {entry.subtitle}
                   </span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 col-start-2 justify-between md:col-start-auto md:justify-start">
                   <span className="font-mono text-mono-label text-foreground-mono">
                     {dateDisplay}
                   </span>
@@ -72,7 +72,7 @@ export default function ResumeSection({
                   </span>
                 </div>
                 <div
-                  className={`col-start-2 col-end-4 grid transition-[grid-template-rows,margin] duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)]  ${
+                  className={`col-start-2 col-end-3 md:col-end-4 grid transition-[grid-template-rows,margin] duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)]  ${
                     openId === entry.id ? "grid-rows-[1fr] mt-4" : "grid-rows-[0fr] mt-0"
                   }`}
                 >

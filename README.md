@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# mattrybicki.com
 
-## Getting Started
+My personal portfolio. The source for [mattrybicki.com](https://mattrybicki.com).
 
-First, run the development server:
+## What this is
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This is the third version of my personal site, and the first one I actually built by hand.
+
+The first two sites I shipped were vibe-coded: I described what I wanted, an AI wrote it, and I shipped code I couldn't read. This one is the opposite. Every line here was hand-typed by me, one concept at a time, with AI acting only as a Socratic tutor (explaining concepts, pointing at docs, reviewing my work) and never as an author. The point was to actually understand my own code.
+
+That is what the footer badge means: roughly 1,100 lines, hand-coded, no AI authoring.
+
+## Stack
+
+- **TypeScript**
+- **React 19**
+- **Next.js 16** (App Router)
+- **Tailwind CSS v4** (design tokens wired through `@theme` in `app/globals.css`)
+
+No component libraries. Layout, state, and interactions are built from primitives.
+
+## Structure
+
+```
+app/
+  page.tsx          home (hero, timeline, selected work, contact)
+  resume/page.tsx   interactive resume (lane toggle, expandable entries)
+  layout.tsx        root layout, fonts, metadata
+  globals.css       design tokens + Tailwind theme
+components/
+  Nav, Footer, HeroBleed, ResumeSection, SkillsSection
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open [http://localhost:3000](http://localhost:3000).

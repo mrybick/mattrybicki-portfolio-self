@@ -30,7 +30,7 @@ export default function Home() {
       id: 4,
       displayname: "ASU",
       tag1: "Education",
-      tag2: "3D Map",
+      tag2: "3D Map - Coming Soon",
       since_yr: 2023,
       url: "#",
     },
@@ -82,10 +82,10 @@ export default function Home() {
   return (
     <main>
       {/* start section 00 */}
-      <section className="min-h-screen grid grid-cols-2 px-6 md:px-12 py-12 border-foreground relative overflow-hidden">
+      <section className="min-h-screen grid grid-cols-1 md:grid-cols-2 px-6 md:px-12 py-12 border-foreground relative overflow-hidden">
         {" "}
         {/* the hero wrapper */}
-        <div className="flex flex-col justify-between pr-8 border-r border-divider">
+        <div className="flex flex-col justify-between md:pr-8 md:border-r border-divider">
           {" "}
           {/* the left column */}
           <div className="flex justify-between items-baseline border-b border-foreground pb-3.5 font-mono uppercase tracking-mono text-mono-label text-foreground">
@@ -125,15 +125,12 @@ export default function Home() {
       </section>{" "}
       {/* end section 00 */}
       {/* start section 01 */}
-      <section
-        id="timeline"
-        className="hidden md:block px-6 md:px-12 py-24 border-b border-divider"
-      >
+      <section id="timeline" className="px-6 md:px-12 py-24 border-b border-divider">
         <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12">
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
             01
           </span>
-          <h2 className="text-display-md font-medium tracking-heading text-foreground">
+          <h2 className="text-h1 md:text-display-md font-medium tracking-heading text-foreground">
             a path, set on an <span className="italic">axis</span>.
           </h2>
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
@@ -141,7 +138,7 @@ export default function Home() {
           </span>
         </div>
 
-        <div className="relative h-px bg-foreground mx-[4%] my-32">
+        <div className="hidden md:block relative h-px bg-foreground mx-[4%] my-32">
           {milestones.map((m) => (
             <div key={m.year} className={`absolute top-0 ${m.posClass} ${m.transformClass}`}>
               <span
@@ -157,18 +154,27 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <div className="md:hidden">
+          {milestones.map((m) => (
+            <div key={m.year} className="border-l border-foreground pl-6 pb-8">
+              <span className="tracking-mono block mb-1 font-mono uppercase text-mono-label text-foreground">
+                {m.year}
+              </span>
+              {m.line1}
+              <br />
+              {m.line2}
+            </div>
+          ))}
+        </div>
       </section>{" "}
       {/* end section 01 */}
       {/* start section 02 */}
-      <section
-        id="selected_work"
-        className="hidden md:block px-6 md:px-12 py-24 border-b border-divider"
-      >
+      <section id="selected_work" className="px-6 md:px-12 py-24 border-b border-divider">
         <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12">
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
             02
           </span>
-          <h2 className="text-display-md font-medium tracking-heading text-foreground">
+          <h2 className="text-h1 md:text-display-md font-medium tracking-heading text-foreground">
             selected work.
           </h2>
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
@@ -207,12 +213,12 @@ export default function Home() {
         </div>
       </section>
       {/* section 03 start */}
-      <section id="contact" className="hidden md:block px-6 md:px-12 py-24">
+      <section id="contact" className="px-6 md:px-12 py-24">
         <div className="grid grid-cols-[3.5rem_1fr_auto] gap-6 items-baseline pb-12">
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">
             03
           </span>
-          <h2 className="text-display-md font-medium tracking-heading text-foreground">
+          <h2 className="text-h1 md:text-display-md font-medium tracking-heading text-foreground">
             let{"'"}s connect.
           </h2>
           <span className="font-mono uppercase tracking-mono text-mono-label text-foreground-mono">

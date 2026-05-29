@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Matt Rybicki",
   description:
-    "Portfolio of Matt Rybicki - Senior at Arizona State studying finance, marketing, and real estate",
+    "Portfolio of Matt Rybicki. Senior at Arizona State studying finance, marketing, and real estate.",
 };
 
 export default function RootLayout({

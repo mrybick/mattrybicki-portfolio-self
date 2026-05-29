@@ -12,7 +12,7 @@ export default function SkillsSection({ skills, activeLane }: SkillsSectionProps
     <section>
       <h2 className="grid grid-cols-[56px_1fr_auto] items-center gap-6 border-b pb-4 mt-24">
         <span className="font-mono text-mono-label text-foreground-mono text-center">07</span>
-        <span className="text-display-md">Skills</span>
+        <span className="text-h1 md:text-display-md">Skills</span>
         <span className="font-mono uppercase text-mono-label text-foreground-mono text-right">
           By category
         </span>
@@ -25,13 +25,13 @@ export default function SkillsSection({ skills, activeLane }: SkillsSectionProps
           return (
             <div
               key={skill.category}
-              className="grid grid-cols-[56px_140px_1fr] gap-x-6 items-baseline py-4 border-b border-divider"
+              className="grid grid-cols-[40px_1fr] md:grid-cols-[56px_140px_1fr] gap-x-6 items-baseline py-4 border-b border-divider"
             >
               <span className="font-mono text-mono-label text-foreground-mono">{num}</span>
               <span className="font-mono uppercase text-mono-label text-foreground-mono">
                 {skill.category}
               </span>
-              <div className="flex flex-wrap gap-y-1.5 text-sm text-foreground-muted">
+              <div className="flex flex-wrap col-start-2 md:col-start-auto gap-y-1.5 text-sm text-foreground-muted">
                 {skill.skills[activeLane].map((item, j) => (
                   <span
                     key={j}
