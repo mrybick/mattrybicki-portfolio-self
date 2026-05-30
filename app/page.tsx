@@ -1,3 +1,5 @@
+"use client";
+
 import HeroBleed from "@/components/HeroBleed";
 
 export default function Home() {
@@ -78,6 +80,9 @@ export default function Home() {
       eventAnchor: "right-0 text-right",
     },
   ];
+
+  const tag = "mrybick2";
+  const edu = "asu.edu";
 
   return (
     <main>
@@ -227,14 +232,24 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-8 items-start">
           <a
-            href="mailto:mrybick2@asu.edu"
+            href="#"
             className="text-display-md font-light tracking-heading text-foreground hover:text-foreground-mono transition-colors duration-300"
+            onClick={(e) => {
+              e.preventDefault();
+              const joined = `${tag}@${edu}`;
+              window.location.href = `mailto:${joined}`;
+            }}
           >
-            mrybick2@asu.edu
+            Email Me.
           </a>
           <a
-            href="mailto:mrybick2@asu.edu"
+            href="#"
             className="inline-flex items-center gap-3 px-6 py-3 border border-foreground font-mono uppercase tracking-mono text-mono-label text-foreground hover:bg-foreground hover:text-background transition-colors duration-300"
+            onClick={(e) => {
+              e.preventDefault();
+              const joined = `${tag}@${edu}`;
+              window.location.href = `mailto:${joined}`;
+            }}
           >
             email me →
           </a>
